@@ -1,0 +1,25 @@
+<hr>
+<h5>Petición:</h5>
+<div class=”btn-group” role=”group” aria-label="Basic example">
+    <button type=”button” class="btn btn-secondary" *ngFor="let item of testOptions" (click)="getData(item.model)">
+        {{item.name}}
+    </button>
+</div>
+<hr>
+<h5>Resultado:</h5>
+
+<ng-container *ngIf="optionSelected === 'get'">
+    <h5>GET</h5>
+   {{result.data | json}}
+   <p *ngFor="let item of result.data">
+         {{item.email}}
+         {{item.first_name}}
+         <img [src]="item.avatar">
+   </p>
+    <!-- <pre>{{result|json}}</pre> -->
+</ng-container>
+
+<ng-container *ngIf="optionSelected === 'post'">
+    <h5>POST</h5>
+    <pre>{{result|json}}</pre>
+</ng-container>
